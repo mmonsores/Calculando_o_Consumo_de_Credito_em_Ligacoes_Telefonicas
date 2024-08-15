@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class ConsumoCredito {
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Ler o número de ligações
+        int n = scanner.nextInt();
+        scanner.nextLine(); // Consumir a quebra de linha
+        
+        double totalCredito = 0.0;
+        
+        // Processar cada ligação
+        for (int i = 0; i < n; i++) {
+            String linha = scanner.nextLine();
+            String[] partes = linha.split(",");
+            
+            // Extrair os valores
+            int duracao = Integer.parseInt(partes[0]);
+            String tipo = partes[1];
+            double creditoPorMinuto = Double.parseDouble(partes[2]);
+            
+            // Calcular o consumo para essa ligação e adicionar ao total
+            totalCredito += duracao * creditoPorMinuto;
+        }
+        
+        // Imprimir o consumo total com duas casas decimais
+        System.out.printf("%.2f\n", totalCredito);
+        
+        scanner.close();
+    }
+}
